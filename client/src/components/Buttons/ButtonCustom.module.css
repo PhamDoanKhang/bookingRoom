@@ -1,0 +1,15 @@
+.add{
+    background: green;  
+    color: white;  
+}
+
+.edit{
+    background: yellow;
+    color: black;
+}
+
+.delete{
+    color: white;
+    background: red;
+}
+

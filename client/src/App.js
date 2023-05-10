@@ -1,18 +1,25 @@
-import React from "react";
 import "./App.css";
+
+import React from "react";
 import Styles from "../src/styles/globalStyles.module.css";
-import { Provider } from "react-redux";
 import store from "./store/store";
+import Sidebar from "./components/Sidebar";
+
+import Index from "../src/components/Test/index";
+import Test from "../src/components/Test/index";
+
+import { Provider } from "react-redux";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import Sidebar from "./components/Sidebar";
-import { getActions } from "./store/redux/slices/actionSlice";
-import Index from "../src/components/Test/index";
+
+import RoomManager from "./page/room_manager";
+
 function App() {
   const HandelRouter = () => {
     return (
       <Routes>
-          <Route path="/book" element={<Index />} />
+          <Route path="/room_manager" element={<RoomManager />} />
+          
       </Routes>
     );
   };
@@ -20,10 +27,10 @@ function App() {
     return (
       <Provider store={store}>
         <div className={Styles.container}>
-        <Routes>
-          <Route path="/book" element={<Index />} />
-      </Routes>
-          {/* {HandelRouter()} */}
+          <Routes>
+            <Route path="/book" element={<Index />} />
+          </Routes>
+            {/* {HandelRouter()} */}
         </div>
       </Provider>
     );
@@ -33,8 +40,8 @@ function App() {
           <ToastContainer />
           <BrowserRouter basename="/">
             <div className={Styles.container}>
-              <Sidebar />
-              {HandelRouter()}
+                <Sidebar />
+                {HandelRouter()}
             </div>
           </BrowserRouter>
         </Provider>

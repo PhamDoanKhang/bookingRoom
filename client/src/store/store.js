@@ -1,15 +1,23 @@
 import { configureStore } from "@reduxjs/toolkit";
 import createSagaMiddleware from "redux-saga";
+
 import rootSaga from "./redux/saga/rootSaga";
-import actionReducer from "../store/redux/slices/actionSlice"
+import loadingReducer from "./redux/slices/LoadingSlice";
+import roomReducer from "./redux/slices/roomSlice";
+import meetingRoomReducer from "./redux/slices/metingroomSlice"
+
+
+
+
 // create the saga middleware
 const sagaMiddleware = createSagaMiddleware()
-
 
 // config store the saga middleware
 const store = configureStore({
     reducer:{
-        actions: actionReducer
+        loading: loadingReducer,
+        room: roomReducer,
+        meetingroom: meetingRoomReducer
     },
     middleware: [sagaMiddleware]
 })

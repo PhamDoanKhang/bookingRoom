@@ -1,8 +1,12 @@
 import { all } from "redux-saga/effects"
-import { actionSaga } from "../saga/watchers/actionsSaga"
+import { LoadingSaga } from "./watchers/LoadingSaga"
+import { roomSaga } from "./watchers/RoomSaga"
+import { mettingRoomSaga } from "./watchers/MeetingRoomSaga"
 
 export default function* rootSaga(){
     yield all([
-        ...actionSaga  
+        ...LoadingSaga,
+        ...roomSaga,
+        ...mettingRoomSaga
     ])
 }

@@ -1,6 +1,5 @@
 import { useJwt } from "react-jwt"
 
-
 // GET TOKEN
 export const getToken = (key = "usertoken")=>{
     if(document.cookie.length > 0){
@@ -14,20 +13,6 @@ export const getToken = (key = "usertoken")=>{
         return token
     }    
 }
-
-// GET USER LOGIN
-// export const getTokenLogin = ()=>{
-//     if(document.cookie.length > 0){
-//         const cookies = document.cookie.split("; ");
-//         let token;
-//         for (const value of cookies) {
-//             if(value.split("=")[0] === ""){
-//                 token = value.split("=")[1]
-//             }
-//         }
-//         return token
-//     }    
-// }
 
 // DECODE TOKEN
 export const parseToken = (token)=>{

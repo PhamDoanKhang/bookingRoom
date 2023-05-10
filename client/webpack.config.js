@@ -21,10 +21,10 @@ const sharedDependencyConfig = sharedDependencies.reduce((configBuilder, depende
 }, {});
 
 module.exports = {
-  entry: "./src/index.js", // Dẫn tới file index.js ta đã tạo
-
+  // entry: "./src/index.js", // Dẫn tới file index.js ta đã tạo
+  entry: path.join(__dirname,"./src/index.js"),
   output: {
-    path: path.join(__dirname, "/build"), // Thư mục chứa file được build ra
+    path: path.resolve(__dirname, "/build"), // Thư mục chứa file được build ra
     filename: "bundle.js", // Tên file được build ra
   },
 
@@ -78,6 +78,7 @@ module.exports = {
   ],
   devtool: "inline-source-map",
   devServer: {
+    port: 5001,
     https: false,
     historyApiFallback: true,
     allowedHosts: "all",

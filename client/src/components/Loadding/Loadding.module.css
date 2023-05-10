@@ -6,7 +6,8 @@
     position: fixed;
     inset: 0;
 
-    background:#011015;
+    background:rgba(0, 0, 0, 0.8);
+    z-index: 99999;
 }
 
 .ring{

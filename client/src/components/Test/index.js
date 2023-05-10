@@ -1,7 +1,20 @@
-import React from 'react'
+import React, { useEffect } from "react";
+import useFetchList from "../../hook/useFetchList";
 
-export default function index() {
-  return (
-    <div><h1>HIIIIIIIIIIIII</h1></div>
-  )
+import { useDispatch } from "react-redux"
+
+import API ,{ endpoints , headers  } from "../../API"
+
+function Test() {
+
+    const HandelClick = ()=>{
+
+    }
+    return ( 
+        <>
+            <button onClick={HandelClick}>OnClick</button>
+        </>
+     );
 }
+
+export default Test;

@@ -1,5 +1,5 @@
 const getRoomData = (req,res)=>{
-    console.log(req);
+    console.log("dang chay");
 }
 
 module.exports = {

@@ -74,7 +74,6 @@ export function updateMeetingRoomAPI(payload){
                 .catch((err)=>{
                     console.log(err);
                 })
-        // console.log({data,id});
     } catch (error) {
         console.log(error);
     }

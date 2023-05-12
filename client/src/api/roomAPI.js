@@ -1,14 +1,13 @@
-import API, {endpoints , headers} from "../API"
+import API, {endpoints , headers} from "../API";
 
-// Get list api
 export function getListRoomApi(){
     try {
-        return API.get(endpoints["getListRoom"])
+        return API.get(endpoints["getListRoom"],{headers: headers.headers_token})
                 .then((res)=>{
                     return res.data;
                 })
                 .catch((err)=>{
-                    // console.log(err);
+                    console.log(err);
                 })
     } catch (error) {
         return error
@@ -33,9 +32,9 @@ export function getRoomIdApi(id){
 // Post room
 export function postRoomAPI(data){
     try {
-        return API.post(endpoints["postListRoom"], { data: data } , { headers: headers.headers_token })
+        return API.post(endpoints["postListRoom"], data, {headers: headers.headers_token})
                     .then((res)=>{
-                        return res.data
+                        return res.data;
                     })
                     .catch((err)=>{
                         console.log(err);
@@ -47,10 +46,9 @@ export function postRoomAPI(data){
 
 }
 
-// Delete room 
 export function deleteRoomAPI(id){
     try {
-        return API.delete(endpoints["deleteRoom"](id),{headers: headers.headers_token})
+        return API.delete(endpoints["deleteRoom"](id), {headers: headers.headers_token})
                     .then((res)=>{
                         return res.data;
                     })
@@ -62,12 +60,11 @@ export function deleteRoomAPI(id){
     }
 }
 
-// Put room 
 export function putRoomAPI(data){
     try {
-        return API.put(endpoints["putRoom"],{data: data})
+        return API.put(endpoints["putRoom"], data, {headers: headers.headers_token})
                     .then((res)=>{
-                        console.log(res.data);
+                        return res.data;
                     })
                     .catch((err)=>{
                         console.log(err);

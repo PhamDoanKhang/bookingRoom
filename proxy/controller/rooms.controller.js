@@ -1,11 +1,9 @@
-const axios = require("axios")
+const { getHeaderToken } = require("../utils/auth/getHeaderToken");
+const { endpoints, headers, API } = require("../API");
 
-const { endpoints, headers, API } = require("../API")
-
-// Get list room
 const getListRoom = (req,res)=>{
     try {
-        API.get(endpoints["getListRoom"])
+        API.get(endpoints["getListRoom"],getHeaderToken(req))
             .then((response)=>{
                 res.send(response.data);
             })
@@ -17,11 +15,11 @@ const getListRoom = (req,res)=>{
     }
 }
 
-// Post list room 
 const postListRoom = (req,res)=>{
     try {
-        const { location, name, options } = req.body.data;
-        API.post(endpoints['postListRoom'], { location,name,options})
+        // const { location, name } = req.body.data;
+        const data = req.body
+        API.post(endpoints['postListRoom'], data, getHeaderToken(req))
             .then((response)=>{
                 res.send(response.data);
             })
@@ -33,13 +31,11 @@ const postListRoom = (req,res)=>{
     }
 }
 
-// Delete list room
 const deleteRoom = (req,res)=>{
     try {
         const { id } = req.query;
-        const headers = req.headers.authorization;
         if(id){
-            API.delete(endpoints['deleteRoom'](id))
+            API.delete(endpoints['deleteRoom'](id),getHeaderToken(req))
                 .then((response)=>{
                    res.send(response.data);
                 })
@@ -52,12 +48,12 @@ const deleteRoom = (req,res)=>{
     }
 }
 
-// Get room id 
+
 const getRoomId = (req,res)=>{
     try {
         const { id } = req.query;
         if(id){
-            API.get(endpoints["getRoomId"](id))
+            API.get(endpoints["getRoomId"](id),getHeaderToken(req))
                 .then((response)=>{
                     res.send(response.data);
                 })
@@ -74,11 +70,11 @@ const getRoomId = (req,res)=>{
 
 const putRoomId = (req,res)=>{
     try {
-        const { id , location , option , name } = req.body.data;
-        console.log({id,location,name,option});
-        API.put(endpoints["putRoom"](id))
+        const { id , location , name } = req.body;
+        const data = { location,name };
+        API.put(endpoints["putRoom"](id), data , getHeaderToken(req))
             .then((response)=>{
-                console.log(response.data);
+                res.send(response.data);
             })
             .catch((err)=>{
                 console.log(err);

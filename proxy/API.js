@@ -24,6 +24,23 @@ let endpoints = {
     "putMeetingRoomID": `/meeting-room/`,
     "deleteMeetingRoom":(id) => `/meeting-room/${id}`,
     "postMeetingRoom":`/meeting-room/`,
+
+    // weekly-schedule
+    "getListWeeklySchedule": "/weekly-schedule",
+    "getIDWeeklySchedule": (id)=>`/weekly-schedule/${id}`,
+    "postListWeeklySchedule": "/weekly-schedule",
+    "deleteListWeeklySchedule":(id) => `/weekly-schedule/${id}`,
+    "putIDWeeklySchedule": (id) => `/weekly-schedule/${id}`,
+
+    // Meeting-Info Ban bien tap
+    "getListMeetingInfo": "/meeting-info/",
+    "getMeetingInfo": (id) => `/meeting-info/${id}`,
+    "deleteMeetingInfo": (id) => `/meeting-info/${id}`,
+    "postMeetingInfo": "/meeting-info/",
+    "putMeetingInfo": (id) => `/meeting-info/${id}`,
+
+
+    
 }
 
 let headers = {

@@ -24,7 +24,22 @@ export let endpoints = {
     "getMeetingRoomID": (id)=>`/api/meet/room-id?id=${id}`,
     "deleteMeetingRoom": (id)=>`/api/meet/delete-room?id=${id}`,
     "postMeetingRoom": "/api/meet/post-room",
-    "putMeetingRoomID":(id)=> `/api/meet/put-room?id=${id}`
+    "putMeetingRoomID":(id)=> `/api/meet/put-room?id=${id}`,
+
+    // Weekly-schedule
+    "getWeeklySchedule": "/api/weekly-schedule",
+    "getWeeklyScheduleID": (id)=> `/api/weekly-schedule/getId?id=${id}`,
+    "postWeekSchedule": (profile_id)=> `/api/weekly-schedule/post?profile_id=${profile_id}`,
+    "deleteWeekSchedule": (id)=>`/api/weekly-schedule/delete?id=${id}`,
+    "putWeekScheduleID": `/api/weekly-schedule/put`,
+
+    // Meeting-Info Ban bien tap
+    "getListMeetingInfo": "/api/meeting-info/",
+    "getMeetingInfo": (id) => `/api/meeting-info/get?id=${id}`,
+    "deleteMeetingInfo": (id) => `/api/meeting-info/delete?id=${id}`,
+    "postMeetingInfo": "/api/meeting-info/post",
+    "putMeetingInfo": (id) => `/api/meeting-info/put?id=${id}`,
+
 }
 
 export let headers = {
@@ -32,7 +47,7 @@ export let headers = {
         "Content-Type": "application/json",
     },
     headers_token: {
-        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjYyLCJleHAiOjE2ODI2ODI5NTh9.ydqEnnhaG7KbxDQr3aT9cYEiMsPvuZPgGigG_SAIkuU`,
+        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZXhwIjoyNzQ5Nzk2MTk2fQ.2i_z3-2cpRRXusvpR-T5h0QvclOi4gL8wq1ze-aLyAA`,
         "Content-Type": "application/json",
     }
 }

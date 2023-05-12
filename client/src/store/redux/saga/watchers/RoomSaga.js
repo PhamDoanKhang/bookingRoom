@@ -1,55 +1,50 @@
-import { takeEvery, call , put, fork, delay } from "redux-saga/effects";
-import { getListRoom , setListRoom , getRoomId , setRoomId, postRoom , deleteRoom , putRoom } from "../../slices/roomSlice";
-import { getListRoomApi,getRoomIdApi,postRoomAPI,deleteRoomAPI,putRoomAPI } from "../../../../api/roomAPI";
+import { takeEvery, call, put, fork, delay} from "redux-saga/effects";
+import { getListRoom, postListRoom, setListRoom, getRoomId, setRoomId, postRoom, deleteRoom, putRoom, deleteListRoom, updateListRoomID} from "../../slices/roomSlice";
+import { getListRoomApi, getRoomIdApi, postRoomAPI, deleteRoomAPI, putRoomAPI} from "../../../../api/roomAPI";
 import { setLoading } from "../../slices/LoadingSlice";
-import { SuccessNotification, InfoNotification , ErrorNotification , WarnNotification } from "../../../../utils/Notification"
+import { SuccessNotification, InfoNotification, ErrorNotification, WarnNotification} from "../../../../utils/Notification";
 
 
 
-function* LoadingOut(){
-    yield delay(1000);
-    yield put(setLoading(false));
-}
-// Get list room
+// function* LoadingOut(){
+//     yield delay(1000);
+//     yield put(setLoading(false));
+// }
+
 function* onHandelGetListRoom(){
     const result = yield call(getListRoomApi);
     if(result.code === "200"){
         yield put(setListRoom(result.data));
-        yield call(LoadingOut);
     }else{
-        yield call(LoadingOut);
+        // yield call(LoadingOut);
     }
 }    
 
-// Get room id
 function* onHandelGetRoomId(payload){
     const { id } = payload.data;
     const result = yield call(getRoomIdApi,id);
     if(result.code === "200"){
         yield put(setRoomId(result.data));
-        yield call(LoadingOut);
     }else{
-        yield call(LoadingOut);
     }
 }
 
-// Post room
 function* onHandelPostRoom(payload){
-    const resuft = yield call(postRoomAPI,payload.data);
-    console.log(resuft);
-    if(resuft.code === "200"){
+    const result = yield call(postRoomAPI,payload.data);
+    if(result.code === "200"){
+        yield put(postListRoom(result.data));
         // Thực hiện gì đó khi tạo thành công
     }else{
         // Thực hiện gì đó khi tạo thất bại
     }
 }
 
-// Delete room id
 function* onHandelDeleteRoom(payload){
     const { id } = payload.data;
     const result = yield call(deleteRoomAPI,id);
     if(result.code === "200"){
-        // Chay doan code trong day 
+        yield put(deleteListRoom(result.data));
+        
     }else{
         // write code here
     }
@@ -59,6 +54,11 @@ function* onHandelDeleteRoom(payload){
 function* onHandelPutRoom(payload){
     const { data } = payload;
     const result = yield call(putRoomAPI,data);
+    if(result.code === "200"){
+       yield put(updateListRoomID(result.data))
+    }else{
+   
+    }
 }
 
 function* allHandelRoomSaga(){

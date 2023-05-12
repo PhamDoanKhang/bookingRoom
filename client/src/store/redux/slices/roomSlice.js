@@ -15,17 +15,27 @@ const roomSlice = createSlice({
         putRoom: ()=>{},
 
         setListRoom: (state,action)=>{
-            state.listRoom = action.payload
+            state.listRoom = action.payload;
         },
-        // get room id
         setRoomId: (state,action)=>{
             state.idRoom = action.payload;
         },
-        // post room
-        //delete room
-        // put room 
+        postListRoom: (state,action)=>{
+            state.listRoom = [...state.listRoom,action.payload];
+        },
+        deleteListRoom: (state,action)=>{
+            state.listRoom = state.listRoom.filter((rooms)=>{
+                return rooms.id !== action.payload
+            })
+        },
+        updateListRoomID: (state,action)=>{
+            state.listRoom = state.listRoom.map((rooms)=>{
+               return rooms.id === action.payload.id ? action.payload : rooms;
+            })
+
+        }
     }
 })
 
-export const { getListRoom, setListRoom , getRoomId , setRoomId , postRoom, deleteRoom , putRoom} = roomSlice.actions
+export const { getListRoom, setListRoom , getRoomId , setRoomId , postRoom, deleteRoom , putRoom, postListRoom, deleteListRoom, updateListRoomID} = roomSlice.actions
 export default roomSlice.reducer

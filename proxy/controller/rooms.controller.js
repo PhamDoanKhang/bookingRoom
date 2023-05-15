@@ -17,7 +17,6 @@ const getListRoom = (req,res)=>{
 
 const postListRoom = (req,res)=>{
     try {
-        // const { location, name } = req.body.data;
         const data = req.body
         API.post(endpoints['postListRoom'], data, getHeaderToken(req))
             .then((response)=>{

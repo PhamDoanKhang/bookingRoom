@@ -4,8 +4,7 @@ export function getWeeklyScheduleAPI(){
     try {
         return API.get(endpoints["getWeeklySchedule"],{headers: headers.headers_token})
                 .then((res)=>{
-                    console.log(res.data);
-                    return res.data
+                    return res.data;
                 })
                 .catch((err)=>{
                     console.log(err);
@@ -16,12 +15,11 @@ export function getWeeklyScheduleAPI(){
     }
 }
 
-export function PostWeeklyScheduleAPI(id){
+export function PostWeeklyScheduleAPI(data){
     try {
-        return API.post(endpoints["postWeekSchedule"](id), {} ,{ headers: headers.headers_token })
+        return API.post(endpoints["postWeekSchedule"], data ,{ headers: headers.headers_token })
                 .then((res)=>{
-                    console.log(res.data);
-                    return res.data
+                    return res.data;
                 })
                 .catch((err)=>{
                     console.log(err);
@@ -34,12 +32,9 @@ export function PostWeeklyScheduleAPI(id){
 
 export function DeleteWeeklyScheduleAPI(id){
     try {
-        console.log(id);
-        console.log(id);
         return API.delete(endpoints["deleteWeekSchedule"](id), { headers: headers.headers_token})
             .then((res)=>{
-                console.log(res.data);
-                return res.data
+                return res.data;
             })
             .catch((err)=>{
                 console.log(err);
@@ -51,11 +46,9 @@ export function DeleteWeeklyScheduleAPI(id){
 
 export function getWeeklyScheduleIDAPI(id){
     try {
-        console.log(id);
         return API.get(endpoints["getWeeklyScheduleID"](id),{headers: headers.headers_token})
                 .then((res)=>{
-                    console.log(res.data);
-                    return res.data
+                    return res.data;
                 })
                 .catch((err)=>{
                     console.log(err);
@@ -69,7 +62,7 @@ export function putWeekScheduleAPI(data){
     try {
         return API.put(endpoints["putWeekScheduleID"],data,{headers: headers.headers_token})
                 .then((res)=>{
-                    return res.data
+                    return res.data;
                 })
                 .catch((err)=>{
                     console.log(err);

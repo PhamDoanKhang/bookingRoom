@@ -29,7 +29,7 @@ export let endpoints = {
     // Weekly-schedule
     "getWeeklySchedule": "/api/weekly-schedule",
     "getWeeklyScheduleID": (id)=> `/api/weekly-schedule/getId?id=${id}`,
-    "postWeekSchedule": (profile_id)=> `/api/weekly-schedule/post?profile_id=${profile_id}`,
+    "postWeekSchedule": "/api/weekly-schedule/post",
     "deleteWeekSchedule": (id)=>`/api/weekly-schedule/delete?id=${id}`,
     "putWeekScheduleID": `/api/weekly-schedule/put`,
 
@@ -40,6 +40,20 @@ export let endpoints = {
     "postMeetingInfo": "/api/meeting-info/post",
     "putMeetingInfo": (id) => `/api/meeting-info/put?id=${id}`,
 
+    // member 
+    "getMemberList": "/api/member/",
+    "getMemberID": id => `/api/member/get?id=${id}`,
+    "deleteMember": id => `/api/member/delete?id=${id}`,
+    "postMember": "/api/member/post",
+    "putMember": id => `/api/member/put?id=${id}`,
+
+    // info-Suggestion
+
+    "getInfoSuggesList": "/api/info-suggestion/",
+    "getInfoSuggesID": id => `/api/info-suggestion/get?id=${id}`,
+    "deleteInfoSugges": id => `/api/info-suggestion/delete?id=${id}`,
+    "postInfoSugges": "/api/info-suggestion/post",
+    "putInfoSugges": id => `/api/info-suggestion/put?id=${id}`,
 }
 
 export let headers = {

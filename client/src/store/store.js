@@ -6,9 +6,9 @@ import loadingReducer from "./redux/slices/LoadingSlice";
 import roomReducer from "./redux/slices/roomSlice";
 import meetingRoomReducer from "./redux/slices/metingroomSlice"
 import weeklyScheduleRuducer from "./redux/slices/weeklyScheduleSlice";
-import meetingInfoReducer from "./redux/slices/meetingInfoSlice"
-
-
+import meetingInfoReducer from "./redux/slices/meetingInfoSlice";
+import memberReducer from "./redux/slices/memberSlice";
+import infoSuggesReducer from "./redux/slices/infoSuggestionSlice";
 // create the saga middleware
 const sagaMiddleware = createSagaMiddleware()
 
@@ -19,7 +19,9 @@ const store = configureStore({
         room: roomReducer,
         meetingroom: meetingRoomReducer,
         weeklySchedule: weeklyScheduleRuducer,
-        meetingInfo: meetingInfoReducer
+        meetingInfo: meetingInfoReducer,
+        member: memberReducer,
+        infoSugges: infoSuggesReducer,
     },
     middleware: [sagaMiddleware]
 })

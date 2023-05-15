@@ -1,10 +1,10 @@
-import { call, fork, takeEvery } from "redux-saga/effects";
-import { getWeeklyScheduleList, setWeeklyScheduleList, postWeekluScheduleID, deleteWeekluScheduleID, getWeeklyScheduleId, setWeeklyScheduleID, putWeeklyScheduleID } from "../../slices/weeklyScheduleSlice";
+import { call, fork, takeEvery , put } from "redux-saga/effects";
+import { getWeeklyScheduleList, setWeeklyScheduleList, postWeekluScheduleID, deleteWeekluScheduleID, getWeeklyScheduleId, setWeeklyScheduleID, putWeeklyScheduleID, setPostWeeklySchedu, setDeleteWeeklySchedu, setUpdateWeeklySchedu } from "../../slices/weeklyScheduleSlice";
 import { getWeeklyScheduleAPI,PostWeeklyScheduleAPI,DeleteWeeklyScheduleAPI, getWeeklyScheduleIDAPI, putWeekScheduleAPI} from "../../../../api/weeklyScheduleAPI";
+import { setPutMeetingRoom } from "../../slices/metingroomSlice";
 
 function* onHandelGetWeeklySchedule(){
-    const result = yield call(getWeeklyScheduleAPI)
-    console.log(result);
+    const result = yield call(getWeeklyScheduleAPI);
     if(result.code === "200"){
         yield put(setWeeklyScheduleList(result.data));
     }else{
@@ -13,27 +13,44 @@ function* onHandelGetWeeklySchedule(){
 }
 
 function* onHandlePostWeeklyScheduleID(payload){
-    const {profile_id} = payload.data;
-    const result = yield call(PostWeeklyScheduleAPI,profile_id);
-    console.log(result);
+    const result = yield call(PostWeeklyScheduleAPI,payload.data);
+    if(result.code === "200"){
+        yield put(setPostWeeklySchedu(result.data));
+    }else{
+
+    }
 
 }
 
 function* onHandelDeleteWeeklyScheduleID(payload){
     const { id } = payload.data;
     const result = yield call(DeleteWeeklyScheduleAPI,id);
-    console.log(result);
+    if(result.code === "200"){
+        yield put(setDeleteWeeklySchedu(result.data));
+    }else{
+
+    }
+    
 }
 
 function* onHandleWeeklyScheduleID(payload){
-    const { id } = payload.data
-    const result = yield call(getWeeklyScheduleIDAPI,id)
+    const { id } = payload.data;
+    const result = yield call(getWeeklyScheduleIDAPI,id);
+    if(result.code === "200"){
+        yield put(setWeeklyScheduleID(result.data));
+    }else{
+
+    }
 }
 
 function* onHandelPutWeeklyScheduleID(payload){
-    console.log(payload);
     const result = yield call(putWeekScheduleAPI,payload.data);
-    console.log(result);
+   
+    if(result.code === "200"){
+       yield put(setUpdateWeeklySchedu(result.data));
+    }else{
+
+    }
 }
 
 function* allHandelScheduleSaga(){

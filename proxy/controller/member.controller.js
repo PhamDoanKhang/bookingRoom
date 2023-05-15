@@ -2,9 +2,10 @@ const { API, endpoints, headers } = require("../API");
 const { getHeaderToken } = require("../utils/auth/getHeaderToken");
 
 
-const getListMeetingInfo = (req,res)=>{
+const getListMember = (req,res)=>{
     try {
-        API.get(endpoints["getListMeetingInfo"],getHeaderToken(req))
+        console.log(req);
+        API.get(endpoints["getListMember"],getHeaderToken(req))
             .then((response)=>{
                 res.send(response.data)
             })
@@ -16,10 +17,10 @@ const getListMeetingInfo = (req,res)=>{
     }
 }
 
-const postMeetingInfo = (req,res)=>{
+const postMember = (req,res)=>{
     try {
-        const data = req.body;
-        API.post(endpoints["postMeetingInfo"],data,getHeaderToken(req))
+        const { profile_id } = req.body;
+        API.post(endpoints["postMember"], { profile_id } ,getHeaderToken(req))
             .then((response)=>{
                 res.send(response.data);
             })
@@ -31,11 +32,13 @@ const postMeetingInfo = (req,res)=>{
     }
 }
 
-const deleteMeetingInfo = (req,res)=>{
+const deleteMember = (req,res)=>{
     try {
         const { id } = req.query;
-        API.delete(endpoints["deleteMeetingInfo"](id), getHeaderToken(req))
+        console.log(id);
+        API.delete(endpoints["deleteMember"](id), getHeaderToken(req))
             .then((resposne)=>{
+                console.log(resposne.data);
                 res.send(resposne.data);
             })
             .catch((err)=>{
@@ -46,11 +49,13 @@ const deleteMeetingInfo = (req,res)=>{
     }
 }
 
-const getMeetingInfo =  (req,res)=>{
+const getMember =  (req,res)=>{
     try {
         const { id } = req.query;
-        API.get(endpoints["getMeetingInfo"](id), getHeaderToken(req))
+        console.log(id);
+        API.get(endpoints["getMember"](id),getHeaderToken(req))
             .then((response)=>{
+                console.log(response.data);
                 res.send(response.data);
             })
             .catch((err)=>{
@@ -61,13 +66,13 @@ const getMeetingInfo =  (req,res)=>{
     }  
 };
 
-const putMeetingInfo = (req,res)=>{
+const putMember = (req,res)=>{
     try {
         const { id } = req.query;
-        const data = req.body
-        API.put(endpoints["putMeetingInfo"](id),data,getHeaderToken(req))
+        const data = req.body;
+        API.put(endpoints["putMember"](id),data,getHeaderToken(req))
             .then((response)=>{
-                res.send(response.data)
+                res.send(response.data);
             })  
             .catch((err)=>{
                 console.log(err);
@@ -78,9 +83,9 @@ const putMeetingInfo = (req,res)=>{
 }
 
 module.exports = {
-    getListMeetingInfo,
-    postMeetingInfo,
-    deleteMeetingInfo,
-    getMeetingInfo,
-    putMeetingInfo
+    getListMember,
+    postMember,
+    deleteMember,
+    getMember,
+    putMember
 }

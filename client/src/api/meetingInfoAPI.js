@@ -4,7 +4,7 @@ export function getListMeetingInfoAPI(){
     try {
         return API.get(endpoints["getListMeetingInfo"],{headers: headers.headers_token})
                 .then((res)=>{
-                    return res.data
+                    return res.data;
                 })
                 .catch((err)=>{
                     console.log(err);
@@ -18,8 +18,7 @@ export function postMeetingInfoAPI(data){
     try {
        return API.post(endpoints["postMeetingInfo"],data,{headers: headers.headers_token})
                 .then((res)=>{
-                    console.log(res.data);
-                    return res.data
+                    return res.data;
                 })
                 .catch((err)=>{
                     console.log(err);
@@ -31,11 +30,10 @@ export function postMeetingInfoAPI(data){
 
 export function deleteMeetingInfoAPI(id) {
         try {
-            console.log(id);
+            console.log("run...");
             return API.delete(endpoints["deleteMeetingInfo"](id),{headers: headers.headers_token})
                     .then((res)=>{
-                        console.log(res.data);
-                        return res.data
+                        return res.data;
                     })
                     .catch((err)=>{
                         console.log(err);
@@ -47,10 +45,8 @@ export function deleteMeetingInfoAPI(id) {
 
 export function getMeetingInfoAPI(id) {
     try {
-        console.log(id);
         return API.get(endpoints["getMeetingInfo"](id),{headers: headers.headers_token})
                 .then((res)=>{
-                    console.log(res.data);
                     return res.data
                 })
                 .catch((err)=>{
@@ -61,12 +57,12 @@ export function getMeetingInfoAPI(id) {
     }
 }
 
-export function putMeetingInfoAPI(data){
+export function putMeetingInfoAPI(payload){
     try {
-        return API.put(endpoints["putMeetingInfo"](1),data,{headers: headers.headers_token})
+        const { id , ...data } = payload;
+        return API.put(endpoints["putMeetingInfo"](id),data,{headers: headers.headers_token})
             .then((res)=>{
-                console.log(res.data);
-                return res.data
+                return res.data;
             })
             .catch((err)=>{
                 console.log(err);

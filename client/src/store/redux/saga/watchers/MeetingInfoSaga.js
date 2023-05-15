@@ -1,5 +1,5 @@
-import { call, fork, takeEvery } from "redux-saga/effects";
-import { getMeetingInforList,postMeetingInfoList, deleteMeetingInfo, getMeetingInfor, putMeetingInfo} from "../../slices/meetingInfoSlice";
+import { call, fork, takeEvery, put} from "redux-saga/effects";
+import { getMeetingInforList,postMeetingInfoList, deleteMeetingInfo, getMeetingInfor, putMeetingInfo, setMeetingInForList, setMeetingInfor, setPostMeeetingInfor, setDeleteMeetingInfor, setPutMeetingInfor} from "../../slices/meetingInfoSlice";
 import { getListMeetingInfoAPI,postMeetingInfoAPI,deleteMeetingInfoAPI,getMeetingInfoAPI, putMeetingInfoAPI} from "../../../../api/meetingInfoAPI";
 
 
@@ -8,28 +8,51 @@ import { getListMeetingInfoAPI,postMeetingInfoAPI,deleteMeetingInfoAPI,getMeetin
 
 function* onHandelGetMeetingInfoList(){
     const result = yield call(getListMeetingInfoAPI);
-    console.log(result);
+    if(result.code === "200"){
+        yield put(setMeetingInForList(result.data));
+    }else{
+
+    }
 }
 
 function* onHandelPostMeetingInfo(payload){
-    const {data} = payload
+    const {data} = payload;
     const resuft = yield call(postMeetingInfoAPI,data)
+    if(resuft.code === "200"){
+        yield put(setPostMeeetingInfor(resuft.data))
+    }else{
+
+    }
 }   
 
 function* onHandelDeleteMeetingInfo(payload){
     const { id } = payload.data;
-    const result = yield call(deleteMeetingInfoAPI,id)
+    const result = yield call(deleteMeetingInfoAPI,id);
+    if(result.code === "200"){
+        yield put(setDeleteMeetingInfor(result.data))
+    }else{
+        
+    }
 }
 
 function* onHandelGetMeetingInfo(payload){
     const { id } = payload.data;
-    const result = yield call(getMeetingInfoAPI,id)
+    const result = yield call(getMeetingInfoAPI,id);
+    if(result.code === "200"){
+        yield put(setMeetingInfor(result.data));
+    }else{
 
+    }
 }
 
 function* onHandelPutMeetingInfo(payload){
-    const { data } = payload
-    const result = yield call(putMeetingInfoAPI,data)
+    const { data } = payload;
+    const result = yield call(putMeetingInfoAPI,data);
+    if(result.code === "200"){
+        yield put(setPutMeetingInfor(result.data))
+    }else{
+
+    }
 }
 
 function* allHandelMeetingInfoSaga(){

@@ -39,8 +39,19 @@ let endpoints = {
     "postMeetingInfo": "/meeting-info/",
     "putMeetingInfo": (id) => `/meeting-info/${id}`,
 
+    // Member
+    "getListMember" : "/member/",
+    "postMember": "/member/",
+    "deleteMember": id => `/member/${id}`,
+    "getMember": id => `/member/${id}`,
+    "putMember": id => `/member/${id}`,
 
-    
+    // info-sugges
+    "getListInfoSugges": '/info-suggestion/',
+    "getInfoSuggesID": id => `/info-suggestion/${id}`,
+    "deleteInfoSugges": id => `/info-suggestion/${id}`,
+    "putInfoSuggesID": id => `/info-suggestion/${id}`,
+    "postInfoSugges": "/info-suggestion/"
 }
 
 let headers = {

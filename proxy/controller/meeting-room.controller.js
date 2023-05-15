@@ -1,14 +1,13 @@
 const axios = require("axios")
-
 const { endpoints, headers, API } = require("../API")
+const { getHeaderToken } = require("../utils/auth/getHeaderToken")
 
 // Get list room
 const getListMeetingRoom = (req,res)=>{
     try {
-        API.get(endpoints["getListMeetingRoom"])
+        API.get(endpoints["getListMeetingRoom"], getHeaderToken(req) )
             .then((response)=>{
-                console.log(response.data);
-                res.send(response.data)
+                res.send(response.data);
             })
             .catch((err)=>{
                 console.log(err);
@@ -20,11 +19,10 @@ const getListMeetingRoom = (req,res)=>{
 
 const deleteMeetingRoom = (req,res)=>{
     try {
-        const { id } = req.query
-        console.log(id);
-        API.get(endpoints["deleteMeetingRoom"](id))
+        const { id } = req.query;
+        API.get(endpoints["deleteMeetingRoom"](id),getHeaderToken(req))
             .then((response)=>{
-                res.send(response.data)
+                res.send(response.data);
             })
             .catch((err)=>{
                 console.log(err);
@@ -38,9 +36,12 @@ const deleteMeetingRoom = (req,res)=>{
 
 const postMeetingRoom = (req,res)=>{
     try {
-        const { data } = req.body
-        API.post(endpoints["postMeetingRoom"],data)
+        const data = req.body;
+        // console.log(data);
+        console.log("Dang chay");
+        API.post(endpoints["postMeetingRoom"],data, getHeaderToken(req))
             .then((response)=>{
+                console.log(response.data);
                 res.send(response.data)
             })
             .catch((err)=>{
@@ -53,10 +54,10 @@ const postMeetingRoom = (req,res)=>{
 
 const getMeetingRoomID = (req,res)=>{
     try {
-        const { id } = req.query
-        API.get(endpoints["getMeetingRoomID"](id))
+        const { id } = req.query;
+        API.get(endpoints["getMeetingRoomID"](id),getHeaderToken(req))
             .then((response)=>{
-                res.send(response.data)
+                res.send(response.data);
             })
             .catch((err)=>{
                 console.log(err);
@@ -69,12 +70,13 @@ const getMeetingRoomID = (req,res)=>{
 
 const putMeetingRoomID = (req,res)=>{
     try {
-        const { id } = req.query
-        const { data } = req.body
-        API.put(`${endpoints["putMeetingRoomID"]}${id}`,data)
+        const { id } = req.query;
+        const data = req.body;
+
+        API.put(`${endpoints["putMeetingRoomID"]}${id}`, data , getHeaderToken(req))
             .then((response)=>{
                 console.log(response.data);
-                res.send(response.data)
+                res.send(response.data);
             })
             .catch((err)=>{
                 console.log(err);

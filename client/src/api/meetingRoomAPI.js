@@ -4,25 +4,24 @@ import API,{ headers , endpoints } from "../API";
 
 export function getMeetingRoomAPI(data){
     try {   
-      return API.get(endpoints["getListMeeting"])
+      return API.get(endpoints["getListMeeting"],{headers: headers.headers_token})
             .then((res)=>{
-                return res.data
+                return res.data;
             })
             .catch((err)=>{
                 console.log(err);
             })
 
     } catch (error) {
-        
+        console.log(error);
     }
 }
 
 export function deleteMeetingRoomAPI(id){
     try {
-        console.log(id);
-        return API.delete(endpoints["deleteMeetingRoom"](id))
+        return API.delete(endpoints["deleteMeetingRoom"](id),{headers: headers.headers_token})
                 .then((res)=>{
-                    return res.data
+                    return res.data;
                 })
                 .catch((err)=>{
                     console.log(err);
@@ -34,9 +33,9 @@ export function deleteMeetingRoomAPI(id){
 
 export function postMeetingRoomAPI(data){
     try {
-      return API.post(endpoints["postMeetingRoom"],{data:data})
+      return API.post(endpoints["postMeetingRoom"], data ,{headers: headers.headers_token})
             .then((res)=>{
-                return res.data
+                return res.data;
             })
             .catch((err)=>{
                 console.log(err);
@@ -48,11 +47,9 @@ export function postMeetingRoomAPI(data){
 
 export function getMeetingRoomIDUserAPI(id){
     try {
-        console.log(id);
-        return API.get(endpoints["getMeetingRoomID"](id))
+        return API.get(endpoints["getMeetingRoomID"](id),{headers: headers.headers_token})
                 .then((res)=>{
-                    console.log(res.data);
-                    return res.data
+                    return res.data;
                 })
                 .catch((err)=>{
                     console.log(err);
@@ -65,11 +62,10 @@ export function getMeetingRoomIDUserAPI(id){
 
 export function updateMeetingRoomAPI(payload){
     try {
-        const { data,id } = payload
-        return API.put(endpoints["putMeetingRoomID"](id),{data:data})
+        const { id, ...res } = payload;
+        return API.put(endpoints["putMeetingRoomID"](id), res , { headers: headers.headers_token })
                 .then((res)=>{
-                    console.log(res.data);
-                    return res.data
+                    return res.data;
                 })
                 .catch((err)=>{
                     console.log(err);

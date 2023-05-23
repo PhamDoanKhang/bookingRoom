@@ -12,14 +12,14 @@ let API = axios.create({
 
 let endpoints = {
     // room
-    "getListRoom" : "/detail-room/",
+    "getListRoom" : (page_size,page) => `/detail-room/?page_size=${page_size}&page=${page}&sort_by=id&order=desc`,
     "postListRoom": "/detail-room/",
     "getRoomId": (id)=>`/detail-room/${id}`,
     "deleteRoom": (id)=>`/detail-room/${id}`,
     "putRoom": (id)=>`/detail-room/${id}`,
 
     // metting room 
-    "getListMeetingRoom": "/meeting-room/",
+    "getListMeetingRoom": (page_size,page) => `/meeting-room/?page_size=${page_size}&page=${page}&sort_by=id&order=desc`,
     "getMeetingRoomID":(id) => `/meeting-room/${id}`,
     "putMeetingRoomID": `/meeting-room/`,
     "deleteMeetingRoom":(id) => `/meeting-room/${id}`,
@@ -47,7 +47,7 @@ let endpoints = {
     "putMember": id => `/member/${id}`,
 
     // info-sugges
-    "getListInfoSugges": '/info-suggestion/',
+    "getListInfoSugges": (page_size,page) => `/info-suggestion/?page_size=${page_size}&page=${page}`,
     "getInfoSuggesID": id => `/info-suggestion/${id}`,
     "deleteInfoSugges": id => `/info-suggestion/${id}`,
     "putInfoSuggesID": id => `/info-suggestion/${id}`,
@@ -67,6 +67,6 @@ let headers = {
 module.exports = {
     headers,
     endpoints,
-    API
+    API  
 }
 

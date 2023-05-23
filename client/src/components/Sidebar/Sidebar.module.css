@@ -1,4 +1,10 @@
 .Sider{
-    background: rgb(3, 97, 0);
-    height: 100%;
+    background: #036100;
+    min-height: 100vh;
 }
+
+.Sider .ant-menu-submenu{
+    background: #036100;
+}
+
+

@@ -1,0 +1,202 @@
+.manager_room-brew{
+    height: 50px;
+    background: #ffffff;
+    align-items: center;
+    display: flex;
+    padding: 0 36px;
+}
+
+.manager_room-container{
+    margin-top: 30px;
+    border-radius: 10px;
+    padding: 20px 36px;
+    width: 1200px;
+}
+
+.manager_room-container > div{
+    background: #ffffff;
+    height: auto;
+    padding: 20px;
+}
+
+.manager_room-check{
+    display: flex;
+    align-items: center;
+}
+.manager_room-title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.manager_room-title > h3{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.manager_room-title > button{
+    border-radius: 4px;
+    background:  #35794A;
+    height: 40px;
+    color: #ffffff;
+}
+
+.manager_room-filter{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.manager_room-search > input{
+    background: #F0F5FA;
+    border-radius: 3px;
+    
+    width: 300px;
+    height: 40px;
+
+    margin-right: 20px;
+}
+
+.manager_room-search > button{
+    background: #35794A;
+    color: #fff;
+    font-weight: bold;
+    height: 40px;
+    min-width: 80px;
+}
+
+.manager_room-table{
+    margin-top: 20px;    
+}
+
+.manager_room-title1{
+    color: #A1A5B7;
+    font-weight: 500;
+    font-size: 14px;
+
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.manager_room-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.manager_room-btn > button{
+    margin: 0 10px;
+    font-size: 12px;
+}
+.manager_room-btn > button:first-child{
+    height: 32px;
+    background: #3699FF;
+    border-radius: 4px;
+    color: #E1F0FF;
+
+}
+
+.manager_room-btn > button:last-child{
+    height: 32px;
+    color: #E0FFF0;
+    background: #29B171;
+    border-radius: 4px;
+}
+
+.manager_room-table .ant-table-thead>tr>th{
+    background: #ffffff !important;
+    padding: 8px !important;
+}
+
+.manager_room-date{
+    height: 40px;
+    background: #F0F5FA;
+    border-radius: 3px;
+}
+.manager_room_nd1{
+    font-size: 12px;
+}
+
+.weekly_calendar{
+    margin-top: 20px;
+}
+.weekly_calender-after{
+    position: relative;   
+    border: 1px solid #EEEFF3;
+    padding: 20px;
+}
+.weekly_calender-after{
+    margin-bottom: 50px;
+}
+
+.weekly_calender-after > h3 {
+    font-size: 12px;
+    color: #464E5F;
+    font-weight: bold;
+
+    position: absolute;
+    top: -10px;
+    left: 20px;
+
+    background: #ffffff;
+}
+.weekly_calender-after > table{
+    width: 100%;
+}
+
+.weekly_table-title{
+    background: #E9E9EC;
+}
+
+.weekly_table-title > th{
+    padding: 5px 0;
+}
+
+.weekly_table-title > th:first-child{
+    width: 30%;
+}
+.weekly_table-title > :not(:first-child){
+    width: 10%;
+}
+.weekly_table-content{
+
+}
+.weekly_table-content > td{
+    padding: 10px 0;
+    text-align: center;
+    border-bottom: 1px solid #EEEFF3;
+    align-items: center;
+}
+
+.weekly_table-content > td:first-child{
+    border-left: 1px solid #EEEFF3;
+}
+
+.weekly_table-content > td:last-child{
+    border-right: 1px solid #EEEFF3;
+}
+
+.weekly-selected{
+
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: #35794A;
+}
+
+.weekly-center{
+    position: relative;
+}
+
+.weekly-selected-option > input{
+    width: 20px;
+    height: 20px;
+    outline-offset: -1px;
+    outline: 3px solid #35794A;
+}

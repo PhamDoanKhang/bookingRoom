@@ -5,8 +5,11 @@ const { getHeaderToken } = require("../utils/auth/getHeaderToken")
 // Get list room
 const getListMeetingRoom = (req,res)=>{
     try {
-        API.get(endpoints["getListMeetingRoom"], getHeaderToken(req) )
+        const { page_size, page} = req.query;
+        console.log({page_size,page});
+        API.get(endpoints["getListMeetingRoom"](page_size,page), getHeaderToken(req) )
             .then((response)=>{
+                console.log(response.data);
                 res.send(response.data);
             })
             .catch((err)=>{
@@ -75,7 +78,7 @@ const putMeetingRoomID = (req,res)=>{
 
         API.put(`${endpoints["putMeetingRoomID"]}${id}`, data , getHeaderToken(req))
             .then((response)=>{
-                console.log(response.data);
+                console.log(response.data.data);
                 res.send(response.data);
             })
             .catch((err)=>{

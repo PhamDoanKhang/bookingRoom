@@ -1,0 +1,80 @@
+.bg-custom{
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 99999;
+}
+.hidden_room{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+
+    width: 440px;
+    padding: 50px;
+    
+    z-index: 9999;
+    border-radius: 10px;
+    background: #fff ;
+    box-sizing: border-box;
+}
+
+.hidden_room-close{
+    position: absolute;
+    right: 20px;
+    top: 20px;
+
+    width: 20px;
+    height: 20px;
+    
+    cursor: pointer;
+    /* background: #000; */
+}
+
+.hidden_room-container{
+    height: 100%;
+}
+
+.hidden_room-title > h2{
+    text-align: center;
+    align-items: center;
+    padding-bottom: 15px;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+.hidden_room-input{
+    width: 100%;
+    text-align: center;
+    padding: 25px 0;
+}
+
+.hidden_room-btn{
+    margin-top: 20px;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.hidden_room-btn > button{ 
+    width: 120px;
+    height: 40px;
+    
+    margin: 0 10px;
+    
+    box-sizing: border-box;
+    border-radius: 3px;
+    border: none;
+}
+
+.hidden_room-btn > button:first-child{
+    background: #35794A;
+    color: #fff;
+    font-weight: bold;
+}
+
+.hidden_room-btn > button:last-child{
+    border: 1px solid #35794A;
+    color: #35794A;
+}

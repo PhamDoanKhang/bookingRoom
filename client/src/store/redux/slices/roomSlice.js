@@ -4,11 +4,15 @@ const roomSlice = createSlice({
     name: "room",
     initialState: {
         listRoom: [],
-        idRoom: {}
+        idRoom: {},
+        listRoomContainer: [],
+        metaData: {}
     },
     reducers: {
         // handel saga
         getListRoom: ()=>{},
+        getRoomList: ()=>{},
+        getRoomListAll: ()=>{},
         getRoomId: ()=>{},
         postRoom: ()=>{},
         deleteRoom:()=>{},
@@ -16,12 +20,24 @@ const roomSlice = createSlice({
 
         setListRoom: (state,action)=>{
             state.listRoom = action.payload;
+            state.listRoomContainer = action.payload;
         },
+
+        getChangeOptionRoom: (state,action)=>{
+            state.listRoom = state.listRoom.filter((rooms)=>{
+                return rooms.status === 0;
+            })
+        },
+
+        getNoChangeOptionRoom: (state)=>{
+            state.listRoom = state.listRoomContainer;
+        },
+
         setRoomId: (state,action)=>{
             state.idRoom = action.payload;
         },
         postListRoom: (state,action)=>{
-            state.listRoom = [...state.listRoom,action.payload];
+            state.listRoom = [action.payload,...state.listRoom];
         },
         deleteListRoom: (state,action)=>{
             state.listRoom = state.listRoom.filter((rooms)=>{
@@ -33,9 +49,13 @@ const roomSlice = createSlice({
                return rooms.id === action.payload.id ? action.payload : rooms;
             })
 
+        },
+        setMetaData: (state,action)=>{
+            state.metaData = action.payload;
         }
+       
     }
 })
 
-export const { getListRoom, setListRoom , getRoomId , setRoomId , postRoom, deleteRoom , putRoom, postListRoom, deleteListRoom, updateListRoomID} = roomSlice.actions
+export const { getNoChangeOptionRoom ,getChangeOptionRoom ,getListRoom, getRoomList,  setListRoom , getRoomId , setRoomId , postRoom, deleteRoom , putRoom, postListRoom, deleteListRoom, updateListRoomID, setMetaData, getRoomListAll} = roomSlice.actions
 export default roomSlice.reducer

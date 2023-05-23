@@ -4,7 +4,8 @@ const meetingroomSlice = createSlice({
     name: "meetingroom",
     initialState: {
         listMeetingRoom: [],
-        mettingRoomID:{}
+        mettingRoomID:{},
+        metaPage:{}
     },
     reducers: {
         getMeetingRoomUser:()=>{},
@@ -13,6 +14,9 @@ const meetingroomSlice = createSlice({
         postMeetingRoom: ()=>{},
         putMeetingRoom:()=>{},
 
+        setMetaPage:(state,action)=>{
+            state.metaPage = action.payload;
+        },
         setMeetingRoomUser:(state,action)=>{
             state.listMeetingRoom = action.payload;
         },
@@ -36,5 +40,5 @@ const meetingroomSlice = createSlice({
     
 })
 
-export const { getMeetingRoomUser,setMeetingRoomUser, deleteMeetingRoom, postMeetingRoom, getMeetingRoomIDUser, putMeetingRoom, setMeetingRoomIDUser, setDeleteMeetingRoom, setPostMeetingRoom, setPutMeetingRoom} = meetingroomSlice.actions
+export const { getMeetingRoomUser,setMeetingRoomUser, deleteMeetingRoom, postMeetingRoom, getMeetingRoomIDUser, putMeetingRoom, setMeetingRoomIDUser, setDeleteMeetingRoom, setPostMeetingRoom, setPutMeetingRoom, setMetaPage} = meetingroomSlice.actions
 export default meetingroomSlice.reducer

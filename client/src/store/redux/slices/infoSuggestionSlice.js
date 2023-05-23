@@ -4,7 +4,8 @@ const infoSuggestionSlice = createSlice({
     name: "infoSuggestion",
     initialState: {
         infoSuggestionList: [],
-        infoSuggestion: {}
+        infoSuggestion: {},
+        metaData: {}
     },
     reducers: {
         getInfoSuggesList:()=>{},
@@ -13,6 +14,9 @@ const infoSuggestionSlice = createSlice({
         deleteInfoSuggesID:()=>{},
         putInfoSuggesID:()=>{},
 
+        setMetaData: (state,action)=>{
+            state.metaData = action.payload;
+        },
         setInforSuggesList:(state,action)=>{
             state.infoSuggestionList = action.payload;
         },
@@ -36,5 +40,5 @@ const infoSuggestionSlice = createSlice({
 })
 
 
-export const { getInfoSuggesID, postInfoSuggesList, getInfoSuggesList, deleteInfoSuggesID, putInfoSuggesID, setInforSuggesList, setInforSugges, setDeleteInforSugges, setPostInforSugges, setPutInforSugges} = infoSuggestionSlice.actions;
+export const { getInfoSuggesID, postInfoSuggesList, setMetaData,getInfoSuggesList, deleteInfoSuggesID, putInfoSuggesID, setInforSuggesList, setInforSugges, setDeleteInforSugges, setPostInforSugges, setPutInforSugges} = infoSuggestionSlice.actions;
 export default infoSuggestionSlice.reducer;

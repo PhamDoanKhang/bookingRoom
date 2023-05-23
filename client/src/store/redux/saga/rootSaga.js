@@ -6,7 +6,7 @@ import { weeklyScheduleSaga } from "./watchers/weeklyScheduleSaga";
 import { MeetingInfoSaga  } from "./watchers/MeetingInfoSaga";
 import { memberSaga } from "./watchers/MemberSaga";
 import { InfoSuggesSaga } from "./watchers/InfoSuggesSaga";
-
+import { participansSaga } from "./watchers/participantsSaga";
 export default function* rootSaga(){
     yield all([
         ...LoadingSaga,
@@ -15,6 +15,7 @@ export default function* rootSaga(){
         ...weeklyScheduleSaga,
         ...MeetingInfoSaga,
         ...memberSaga,
-        ...InfoSuggesSaga
+        ...InfoSuggesSaga,
+        ...participansSaga
     ])
 }

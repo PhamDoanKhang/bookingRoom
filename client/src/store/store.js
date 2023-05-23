@@ -9,6 +9,7 @@ import weeklyScheduleRuducer from "./redux/slices/weeklyScheduleSlice";
 import meetingInfoReducer from "./redux/slices/meetingInfoSlice";
 import memberReducer from "./redux/slices/memberSlice";
 import infoSuggesReducer from "./redux/slices/infoSuggestionSlice";
+import participantsReducer from "./redux/slices/participantsSlice";
 // create the saga middleware
 const sagaMiddleware = createSagaMiddleware()
 
@@ -22,6 +23,7 @@ const store = configureStore({
         meetingInfo: meetingInfoReducer,
         member: memberReducer,
         infoSugges: infoSuggesReducer,
+        participants: participantsReducer,
     },
     middleware: [sagaMiddleware]
 })

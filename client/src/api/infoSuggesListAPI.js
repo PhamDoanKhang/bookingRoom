@@ -2,9 +2,11 @@ import API,{ endpoints, headers} from "../API";
 
 
 
-export function getInfoSuggesListAPI(){
+export function getInfoSuggesListAPI(data){
     try {
-        return API.get(endpoints["getInfoSuggesList"],{headers: headers.headers_token})
+        const { page_size,page , sort_by, order} = data;
+        console.log({ page_size,page , sort_by, order});
+        return API.get(endpoints["getInfoSuggesList"](page_size,page,sort_by,order),{headers: headers.headers_token})
                 .then((res)=>{
                     // console.log(res.data);
                     return res.data;
@@ -12,7 +14,7 @@ export function getInfoSuggesListAPI(){
                 .catch((err)=>{
                     console.log(err);
                 })
-        //  retur       
+         retur       
     } catch (error) {
         console.log(error);
     }

@@ -13,14 +13,17 @@ export default axios.create({
 
 export let endpoints = {
     // Detail Meeting Room
-    "getListRoom" : "/api/room/list",
+    "getListRoom" : (page_size,page,sort_by,order)=>  `/api/room/list?page_size=${page_size}&page=${page}&sort_by=${sort_by}&order=${order}`,
+    "getRoomList" : "/api/room/room-list",
     "getRoomId": (id)=> `/api/room/get-room-id?id=${id}`,
     "postListRoom": "/api/room/post-list-room",
     "deleteRoom": (id)=>`/api/room/delete-room?id=${id}`,
+    "putStatusRoom": "/api/room/status",
+
     "putRoom": `/api/room/put-room-id`,
 
     // Metting Room
-    "getListMeeting": "/api/meet/list",
+    "getListMeeting": (page, page_size, order, sort_by) => `/api/meet/list?page_size=${page_size}&page=${page}&sort_by=${sort_by}&order=${order}`,
     "getMeetingRoomID": (id)=>`/api/meet/room-id?id=${id}`,
     "deleteMeetingRoom": (id)=>`/api/meet/delete-room?id=${id}`,
     "postMeetingRoom": "/api/meet/post-room",
@@ -49,11 +52,14 @@ export let endpoints = {
 
     // info-Suggestion
 
-    "getInfoSuggesList": "/api/info-suggestion/",
+    "getInfoSuggesList": (page_size,page,sort_by,order)  => `/api/info-suggestion/?page_size=${page_size}&page=${page}&sort_by=${sort_by}&order=${order}`,
     "getInfoSuggesID": id => `/api/info-suggestion/get?id=${id}`,
     "deleteInfoSugges": id => `/api/info-suggestion/delete?id=${id}`,
     "postInfoSugges": "/api/info-suggestion/post",
     "putInfoSugges": id => `/api/info-suggestion/put?id=${id}`,
+
+    //participants
+    
 }
 
 export let headers = {

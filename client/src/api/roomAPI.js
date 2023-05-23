@@ -1,8 +1,15 @@
+import axios from "axios";
 import API, {endpoints , headers} from "../API";
 
-export function getListRoomApi(){
+
+export function getRoomListAPI(){
+    
+}
+
+export function getListRoomApi(data){
     try {
-        return API.get(endpoints["getListRoom"],{headers: headers.headers_token})
+        const {page_size, page , sort_by , order} = data;
+        return API.get(endpoints["getListRoom"](page_size, page, sort_by, order),{headers: headers.headers_token})
                 .then((res)=>{
                     return res.data;
                 })
@@ -46,24 +53,31 @@ export function postRoomAPI(data){
 
 }
 
-export function deleteRoomAPI(id){
+export function deleteRoomAPI(data){
     try {
-        return API.delete(endpoints["deleteRoom"](id), {headers: headers.headers_token})
+
+
+        console.log(data);
+        return API.put(endpoints["putStatusRoom"], data , { headers: headers.headers_token})
                     .then((res)=>{
+                        console.log(res.data);
                         return res.data;
                     })
                     .catch((err)=>{
                         console.log(err);
                     })
+
+
     } catch (error) {
         console.log(error);
     }
 }
 
-export function putRoomAPI(data){
+export function putRoomAPI(data){   
     try {
         return API.put(endpoints["putRoom"], data, {headers: headers.headers_token})
                     .then((res)=>{
+                        console.log(res.data);
                         return res.data;
                     })
                     .catch((err)=>{

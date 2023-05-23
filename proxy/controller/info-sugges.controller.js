@@ -5,7 +5,9 @@ const { getHeaderToken  } = require("../utils/auth/getHeaderToken")
 // Get list room
 const getListInfoSugges = (req,res)=>{
     try {
-        API.get(endpoints["getListInfoSugges"], getHeaderToken(req))
+        
+        const {page_size,page} = req.query; 
+        API.get(endpoints["getListInfoSugges"](page_size,page), getHeaderToken(req))
             .then((response)=>{
                 console.log(response.data);
                 res.send(response.data)

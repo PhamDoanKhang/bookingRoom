@@ -1,0 +1,129 @@
+.manager_room-brew{
+    height: 50px;
+    background: #ffffff;
+    align-items: center;
+    display: flex;
+    padding: 0 36px;
+}
+
+.manager_room-container{
+    margin-top: 30px;
+    border-radius: 10px;
+    padding: 20px 36px;
+    width: 1200px;
+}
+
+.manager_room-container > div{
+    background: #ffffff;
+    height: 100%;
+    padding: 20px;
+}
+
+.manager_room-check{
+    display: flex;
+    align-items: center;
+}
+.manager_room-title{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.manager_room-title > h3{
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.manager_room-title > button{
+    border-radius: 4px;
+    background:  #35794A;
+    height: 40px;
+    color: #ffffff;
+}
+
+.manager_room-filter{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.manager_room-search > input{
+    background: #F0F5FA;
+    border-radius: 3px;
+    
+    width: 300px;
+    height: 40px;
+
+    margin-right: 20px;
+}
+
+.manager_room-brew  a:hover{
+    background: transparent;
+}
+
+.manager_room-search > button{
+    background: #35794A;
+    color: #fff;
+    font-weight: bold;
+    height: 40px;
+    min-width: 80px;
+}
+
+.manager_room-table{
+    margin-top: 20px;    
+}
+
+.manager_room-title1{
+    color: #A1A5B7;
+    font-weight: 500;
+    font-size: 14px;
+
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+
+.manager_room-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.manager_room-btn > button{
+    margin: 0 10px;
+    font-size: 12px;
+}
+.manager_room-btn > button:first-child{
+    height: 32px;
+    background: #3699FF;
+    border-radius: 4px;
+    color: #E1F0FF;
+
+}
+
+.manager_room-btn > button:last-child{
+    height: 32px;
+    color: #E0FFF0;
+    background: #29B171;
+    border-radius: 4px;
+}
+
+.manager_room-table .ant-table-thead>tr>th{
+    background: #ffffff !important;
+    padding: 8px !important;
+}
+
+.manager_room-date{
+    height: 40px;
+    background: #F0F5FA;
+    border-radius: 3px;
+}
+
+.manager_room_nd1{
+    font-size: 12px;
+}
+
+.room-title-color{
+    color: #29B171;
+}

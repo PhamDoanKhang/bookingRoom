@@ -1,13 +1,14 @@
 import { call, fork, takeEvery, put } from "redux-saga/effects";
-import { getInfoSuggesID, getInfoSuggesList, postInfoSuggesList, deleteInfoSuggesID, putInfoSuggesID, setInforSuggesList, setInforSugges, setDeleteInforSugges, setPostInforSugges, setPutInforSugges} from "../../slices/infoSuggestionSlice";
+import { getInfoSuggesID, setMetaData,getInfoSuggesList, postInfoSuggesList,deleteInfoSuggesID, putInfoSuggesID, setInforSuggesList, setInforSugges, setDeleteInforSugges, setPostInforSugges, setPutInforSugges} from "../../slices/infoSuggestionSlice";
 import { getInfoSuggesListAPI, getInfoSuggesIDAPI, deleteInfoSuggesIDAPI, putInfoSuggesIDAPI, postInfoSuggesListAPI } from "../../../../api/infoSuggesListAPI";
 
 
 
-function* onHandelgetInfoSuggesList(){
-    const result = yield call(getInfoSuggesListAPI);
+function* onHandelgetInfoSuggesList(payload){
+    const result = yield call(getInfoSuggesListAPI,payload.data);
     if(result.code === "200"){
         yield put(setInforSuggesList(result.data));
+        yield put(setMetaData(result.metadata))
     }else{
 
     }

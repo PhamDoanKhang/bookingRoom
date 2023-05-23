@@ -9,7 +9,27 @@
     padding: 0;
 }
 
+:root{
+    --input-color: #F3F6F9,
+    --bg-privite-color: #fff,
+    --text-color: #000,
+    --text-sub-color: #464E5F,
+    --btn-yes-color: #fff,
+    --btn-no-color: #35794A,
+    --bg-btn-color: #35794A
+}
+
 h1,h2,h3,h4 {
     padding: 0;
     margin: 0;
+}
+
+.ant-table-thead >tr>th{
+    padding: 8px !important;
+    background: #fff !important;
+}
+
+.ant-table-tbody>tr>td{
+    padding: 10px 16px;
+    text-align: center;
 }

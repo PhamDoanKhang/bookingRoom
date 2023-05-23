@@ -4,7 +4,8 @@ import API,{ headers , endpoints } from "../API";
 
 export function getMeetingRoomAPI(data){
     try {   
-      return API.get(endpoints["getListMeeting"],{headers: headers.headers_token})
+      const { page, page_size, order, sort_by } = data
+      return API.get(endpoints["getListMeeting"](page, page_size, order, sort_by),{headers: headers.headers_token})
             .then((res)=>{
                 return res.data;
             })
@@ -63,6 +64,7 @@ export function getMeetingRoomIDUserAPI(id){
 export function updateMeetingRoomAPI(payload){
     try {
         const { id, ...res } = payload;
+        console.log({id,res});
         return API.put(endpoints["putMeetingRoomID"](id), res , { headers: headers.headers_token })
                 .then((res)=>{
                     return res.data;

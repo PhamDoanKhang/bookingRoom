@@ -21,6 +21,7 @@ import Styles from "./register_weekly_list.module.css";
 
 import { PlusOutlined } from "@ant-design/icons"
 import { Button, Breadcrumb, Input, Checkbox, Table, DatePicker } from "antd";
+import { useNavigate } from "react-router-dom";
 
 function WeeklyCalendarRegisterList() {
     const itemPath = [
@@ -34,7 +35,12 @@ function WeeklyCalendarRegisterList() {
         },
     ]
 
-    
+    const navigate = useNavigate();
+
+
+    const HandelPathContent = ()=>{
+        navigate("/propose_list-content");
+    }
     
     return ( 
         <div className={Styles['manager_room']}>
@@ -78,7 +84,7 @@ function WeeklyCalendarRegisterList() {
                                     </tr>
                                     <tr className={Styles["weekly_table-content"]}>
                                         <td></td>
-                                        <td><EditOutlined className={Styles["edit"]} /></td>
+                                        <td><EditOutlined onClick={()=>HandelPathContent()} className={Styles["edit"]} /></td>
                                         <td></td>
                                         <td></td>
                                         <td></td>

@@ -7,6 +7,7 @@ import { Button, Breadcrumb, Input, Switch, Table, DatePicker } from "antd";
 import { listMeetingRoomSelecter, loadingSelecter,  } from "../../store/redux/selecters";
 import { useDispatch, useSelector} from "react-redux";
 // import { getListRoom, getNoChangeOptionRoom, getChangeOptionRoom } from "../../store/redux/slices/roomSlice";
+import { useNavigate } from "react-router-dom";
 
 import Loadding from "../../components/Loadding";
 
@@ -15,7 +16,8 @@ import Loadding from "../../components/Loadding";
 
 function RoomOrderList() {
     // useDispath
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
+    const navigage = useNavigate();
 
     // UseSelecter 
     // const pageSelecter = useSelector(roomMetadataSelecer);
@@ -101,7 +103,9 @@ function RoomOrderList() {
     ]
 
     // Function 
-   
+    const HandelPathOrder = ()=>{
+        navigage("/order_room");
+    }
 
     // console.log(loading);
     return ( 
@@ -114,7 +118,7 @@ function RoomOrderList() {
                 <div>
                     <div className={Styles["manager_room-title"]}>
                         <h3>Danh sách phòng đặt</h3>
-                        <Button icon={<PlusOutlined />} onClick={()=>("")} type="ghost">Đặt phòng họp</Button>
+                        <Button icon={<PlusOutlined />} onClick={()=>(HandelPathOrder())} type="ghost">Đặt phòng họp</Button>
                     </div>
                     <div className={Styles["manager_room-filter"]}>
                         <div className={Styles["manager_room-search"]}>

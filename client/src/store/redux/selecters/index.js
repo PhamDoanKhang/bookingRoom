@@ -26,3 +26,8 @@ export const meetingInfoSelecter = (state)=> state.meetingInfo.meetingInfo;
 export const InfoSuggesListSelecter = (state)=> state.infoSugges.infoSuggestionList;
 export const InfoSuggesSelecter = (state)=> state.infoSugges.infoSuggestion;
 export const InfoSuggesMetaDataSelecter = (state)=> state.infoSugges.metaData;
+
+// participants
+
+export const IndividualSelecter = (state) => state.participants.Individual
+export const DepartmentSelecter = (state) => state.participants.Department

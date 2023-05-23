@@ -1,14 +1,20 @@
-import { takeEvery, call , fork  } from "redux-saga/effects";
+import { takeEvery, call , fork, put } from "redux-saga/effects";
 import { getIndividual, getDepartment, setDepartment, setIndividual } from "../../slices/participantsSlice";
-
+import { GetIndividualAPI,getDepartmentAPI } from "../../../../api/participantsAPI";
 
 function* onHandelGetIndividual(){
     const result = yield call(GetIndividualAPI)
-    console.log(result);
+   
+   if(result.code === 200){
+      yield put(setIndividual(result.data));
+   }
 }
 
 function* onHandelGetDepartment(){
-
+    const result = yield call(getDepartmentAPI)
+    if(result.code === 200){
+       yield put(setDepartment(result.data));
+    }
 }
 
 

@@ -59,6 +59,8 @@ export let endpoints = {
     "putInfoSugges": id => `/api/info-suggestion/put?id=${id}`,
 
     //participants
+    "getIndividual": "/api/participants/getIndividual",
+    "getDepartment": "/api/participants/getDepartment"
     
 }
 

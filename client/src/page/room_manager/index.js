@@ -14,8 +14,6 @@ import AddRoom from "../../components/AddRoom";
 import EditRoom from "../../components/EditRoom";
 import HiddenRoom from "../../components/HiddenRoom";
 
-
-
 function RoomManager() {
     // UseState 
     const [showEditRoom,setShowEditRoom] = useState(false);
@@ -32,6 +30,7 @@ function RoomManager() {
     useEffect(()=>{
         dispatch({type: getListRoom.type, data:{ page_size: page.page_size , page : page.page, sort_by: "1", order: "desc" }});
         dispatch({type: getLoading.type });
+            
     },[page])
 
     useEffect(()=>{

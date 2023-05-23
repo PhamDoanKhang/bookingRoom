@@ -3,27 +3,40 @@ import React from "react";
 
 import { useState, useEffect } from "react";
 import { LeftOutlined } from "@ant-design/icons"
-import { Button, Breadcrumb, Input, Select, DatePicker, Checkbox} from "antd";
-import { listRoomSelecter } from "../../store/redux/selecters";
+import { Button, Breadcrumb, Input, Select, DatePicker, Checkbox, InputNumber } from "antd";
+import { DepartmentSelecter, IndividualSelecter, listRoomSelecter } from "../../store/redux/selecters";
 import { useDispatch, useSelector } from "react-redux";
 import { getListRoom } from "../../store/redux/slices/roomSlice";
 
 import TextArea from "antd/es/input/TextArea";
-
+import { getDepartment , getIndividual} from "../../store/redux/slices/participantsSlice";
+import { useNavigate } from "react-router-dom";
 
 function RoomOrderUser() {
-    const [page,setPage] = useState({ page_size: 10 , page: 1 })
+    const [page,setPage] = useState({ page_size: 10 , page: 1 });
+    const [valueOption,setValueOpTion] = useState("");
+    const [option,setOption] = useState([]);
+    const [content, setContent] = useState("");
     // dispatch
     const dispatch = useDispatch();
+    const navigate = useNavigate()
 
     // useEffect
     useEffect(()=>{
         dispatch({type: getListRoom.type, data:{ page_size: page.page_size , page : page.page, sort_by: "1", order: "desc" }});
+        dispatch({type: getIndividual.type});
+        dispatch({type: getDepartment.type});
     },[])
-
     // UseSelecter
     const listRoom = useSelector(listRoomSelecter);
-    console.log(listRoom);
+    const Individuals = useSelector(IndividualSelecter);
+    const Departments = useSelector(DepartmentSelecter)
+   
+    const listRoomUser = listRoom.filter(listRoom=>{
+        return listRoom.status === 0;
+    })
+
+  
 
     const itemPath = [
         {
@@ -39,8 +52,17 @@ function RoomOrderUser() {
     const HandelShowPopupAddRoom = ()=>{
         
     }
+    const HandelSaveOption = ()=>{
+        setOption([...option,valueOption]);
+        setValueOpTion("");
+    }
+    const HandelPrev = ()=>{
+        navigate("/room_order-user")
+    }
 
-    // console.log(loading);
+    // console.log(listRoomUser);
+
+    console.log(content);
     return ( 
         <div className={Styles['manager_room']}>
             {/* <Loadding loading={loading} />  */}
@@ -51,7 +73,7 @@ function RoomOrderUser() {
                 <div>
                     <div className={Styles["manager_room-title"]}>
                         <h3>Danh sách phòng đặt</h3>
-                        <Button icon={<LeftOutlined />} onClick={()=>HandelShowPopupAddRoom()} type="ghost">Trở lại</Button>
+                        <Button icon={<LeftOutlined />} onClick={()=>HandelPrev()} type="ghost">Trở lại</Button>
                     </div>
                     <div className={Styles["br"]}></div>
                     <div className={Styles["order_room-container"]}>
@@ -63,30 +85,59 @@ function RoomOrderUser() {
                                 </div>
                                 <div className={Styles["order_room-item"]}>
                                         <span>Số lượng:</span>
-                                        <Input  />
+                                        <Input type="" />
+                                        {/* <InputNumber className={Styles["input-Number"]} min={1} max={100} value={1} /> */}
                                 </div>
                                 <div className={Styles["order_room-item"]}>
                                         <span>Địa điểm:</span>
                                         <Select 
                                             className={Styles["order_room-select"]} 
-                                            options={listRoom.map((room) => ({
-                                                
-                                            }))}
+                                            options={listRoomUser.map((room)=>{
+                                                return {
+                                                    value: room.id,
+                                                    label: room.location
+                                                }
+                                            })}
                                         />  
                                 </div>
                                 <div className={Styles["order_room-item"]}>
                                         <span>Tên phòng</span>
-                                        <Select className={Styles["order_room-select"]} />  
+                                        <Select 
+                                            options={listRoomUser.map((room)=>{
+                                                return {
+                                                    value: room.id,
+                                                    label: room.name
+                                                }
+                                            })}
+                                            className={Styles["order_room-select"]} 
+                                        />  
                                 </div>
                                 <div className={Styles["title"]}>Thành phần</div>
                                 <div></div>
                                 <div className={Styles["order_room-item"]}>
-                                    <Checkbox>Phòng ban</Checkbox>
-                                    <Select className={Styles["order_room-select"]} />  
+                                    {/* <Checkbox>Phòng ban</Checkbox> */}
+                                    <div>Phòng ban</div>
+                                    <Select
+                                        options={Departments.map((indvidual)=>{
+                                            return {
+                                                value: indvidual.id,
+                                                label: indvidual.name
+                                            }
+                                        })} 
+                                        className={Styles["order_room-select"]} 
+                                    />  
                                 </div>
                                 <div className={Styles["order_room-item"]}>
-                                    <Checkbox>Cá nhân</Checkbox>
-                                        <Select className={Styles["order_room-select"]} />  
+                                    {/* <Checkbox>Cá nhân</Checkbox> */}
+                                    <div>Cá nhân</div>
+                                        <Select 
+                                            options={Individuals.map((indvidual)=>{
+                                                return {
+                                                    value: indvidual.id,
+                                                    label: indvidual.name
+                                                }
+                                            })} 
+                                            className={Styles["order_room-select"]} />  
                                 </div>
                             </div>
                             
@@ -116,16 +167,20 @@ function RoomOrderUser() {
                     </div>
                     <div className={Styles["option"]}>
                         <label>Option:</label>
-                        <Input placeholder="Chọn option" />
-                        <Button type="ghost">Thêm</Button>
+                        <Input placeholder="Chọn option" value={valueOption} onChange={(e)=>{setValueOpTion(e.target.value)}} />
+                        <Button type="ghost" onClick={()=>{HandelSaveOption()}} >Thêm</Button>
                     </div>
                     <div className={Styles["list-option"]}>
-                        <div className={Styles["option-item"]}>
-                            <div></div>
-                            <div>Tivi</div>
-                            <></>
-                        </div>
-                        <div className={Styles["option-item"]}>
+                        {option && option.map((value)=>{
+                            return (
+                            <div className={Styles["option-item"]}>
+                                <div></div>
+                                <div>{value}</div>
+                                <></>
+                            </div>
+                            )
+                        })}
+                        {/* <div className={Styles["option-item"]}>
                             <div></div>
                             <div>Trái cây</div>
                         </div>
@@ -136,12 +191,12 @@ function RoomOrderUser() {
                         <div className={Styles["option-item"]}>
                             <div></div>
                             <div>Tấm Bảng</div>
-                        </div>
+                        </div> */}
                     </div>
                     <div className={Styles["detail_room-note"]}>
                         <h3>Nội dung cuộc họp:</h3>
                         <div className={Styles["detail_room-text"]}>
-                            <TextArea  />
+                            <TextArea onChange={(e)=>{(setContent(e.target.value))}}  />
                         </div>
                     </div>
                     <div className={Styles["detail_room-display"]}>
